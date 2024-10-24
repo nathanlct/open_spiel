@@ -28,10 +28,18 @@ void BasicPhantomTTTTests() {
   testing::RandomSimTestWithUndo(*LoadGame("phantom_ttt"), 1);
 }
 
+void AbruptAndClassicalPhantomTTTTests() {
+  testing::LoadGameTest("phantom_ttt(gameversion=classical)");
+  testing::LoadGameTest("phantom_ttt(gameversion=abrupt)");
+  testing::NoChanceOutcomesTest(*LoadGame("phantom_ttt(gameversion=classical)"));
+  testing::NoChanceOutcomesTest(*LoadGame("phantom_ttt(gameversion=abrupt)"));
+}
+
 }  // namespace
 }  // namespace phantom_ttt
 }  // namespace open_spiel
 
 int main(int argc, char** argv) {
   open_spiel::phantom_ttt::BasicPhantomTTTTests();
+  open_spiel::phantom_ttt::AbruptAndClassicalPhantomTTTTests();
 }

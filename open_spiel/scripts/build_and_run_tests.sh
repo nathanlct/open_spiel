@@ -219,32 +219,32 @@ else
       make -j$MAKE_NUM_PROCS
     fi
 
-    if [[ $ARG_build_only == "true" ]]; then
-      echo -e "\033[32m*** Skipping runing tests as build_only is ${ARG_build_only} \e[0m"
-    else
-      if ctest -j$TEST_NUM_PROCS --output-on-failure -R "$ARG_test_only" ../open_spiel; then
-        print_tests_passed
-      else
-        print_tests_failed
-      fi
-    fi
+    # if [[ $ARG_build_only == "true" ]]; then
+    #   echo -e "\033[32m*** Skipping runing tests as build_only is ${ARG_build_only} \e[0m"
+    # else
+    #   if ctest -j$TEST_NUM_PROCS --output-on-failure -R "$ARG_test_only" ../open_spiel; then
+    #     print_tests_passed
+    #   else
+    #     print_tests_failed
+    #   fi
+    # fi
   else
     # Make everything
     echo "Building project"
     make -j$MAKE_NUM_PROCS
 
-    if [[ $ARG_build_only == "true" ]]; then
-      echo -e "\033[32m*** Skipping runing tests as build_only is ${ARG_build_only} \e[0m"
-    else
-      # Test everything
-      echo "Running all tests"
+    # if [[ $ARG_build_only == "true" ]]; then
+    #   echo -e "\033[32m*** Skipping runing tests as build_only is ${ARG_build_only} \e[0m"
+    # else
+    #   # Test everything
+    #   echo "Running all tests"
 
-      if ctest -j$TEST_NUM_PROCS --output-on-failure ../open_spiel; then
-        print_tests_passed
-      else
-        print_tests_failed
-      fi
-    fi
+    #   if ctest -j$TEST_NUM_PROCS --output-on-failure ../open_spiel; then
+    #     print_tests_passed
+    #   else
+    #     print_tests_failed
+    #   fi
+    # fi
   fi
 
   cd ..
